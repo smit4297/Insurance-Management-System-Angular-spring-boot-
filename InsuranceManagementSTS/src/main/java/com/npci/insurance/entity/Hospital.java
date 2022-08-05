@@ -10,6 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "hospital")
 public class Hospital {
+	
 	@Id
 	@Column(name = "hospitalid")
 	private Integer hospitalid;
