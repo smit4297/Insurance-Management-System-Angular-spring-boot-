@@ -1,0 +1,74 @@
+<header class="text-gray-700 body-font border-b border-gray-200">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" (click)="Home()" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+        <span class="ml-3 text-xl" >SSR Federal Insurance</span>
+      </a>
+      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        <a class="mr-5 hover:text-gray-900" (click)="HealthInsurance()">Health Insurance</a>
+        <a class="mr-5 hover:text-gray-900" (click)="HomeInsurance()">Home Insurance</a>
+        <div *ngIf="!isLoggedIn; else elseBlock">
+          <a class="mr-5 hover:text-gray-900" (click)="AdminLogin()">Admin Login</a>
+          <a class="mr-5 hover:text-gray-900" (click)="UserLogin()">User Login</a>
+        </div>
+        <ng-template #elseBlock>
+        <a class="mr-5 hover:text-gray-900" (click)="OwnedPolicies()">Your policies</a>
+        </ng-template>
+      </nav>
+      <!-- <button class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0">Button
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </button> -->
+    </div>
+  </header>
+
+<div class="bg-white shadow overflow-hidden sm:rounded-lg">
+    <br><br>
+    <h3 style="font-size: xx-large; color: #6864f4; text-align: center;"><b>{{healthpolicy.policyname}}</b></h3>
+    <br><br>
+    <div class="border-t border-gray-200">
+        <dl>
+            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500" style="text-align: center; font-size: 20px;">policyid</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{healthpolicy.policyid}}</dd>
+            </div>
+            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500"  style="text-align: center; font-size: 20px;">policyname</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" style="font-size: 15px;">{{healthpolicy.policyname}}</dd>
+            </div>
+            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500"  style="text-align: center; font-size: 20px;">policydescription</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" style="font-size: 15px;">{{healthpolicy.policydescription}}</dd>
+            </div>
+            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500"  style="text-align: center; font-size: 20px;">sumassurence</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" style="font-size: 15px;">{{healthpolicy.sumassurence}}</dd>
+            </div>
+            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500"  style="text-align: center; font-size: 20px;">policyterm</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" style="font-size: 15px;">{{healthpolicy.policyterm}} year</dd>
+            </div>
+            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500"  style="text-align: center; font-size: 20px;">premium</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" style="font-size: 15px;">{{healthpolicy.premium}}</dd>
+            </div>
+            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500"  style="text-align: center; font-size: 20px;">Hospitals covered</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" style="font-size: 20px;"><p style="font-size: 15px;" *ngFor="let hospital of hospitalList">{{hospital.hospitalname}}</p></dd>
+            </div>
+            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500"  style="text-align: center; font-size: 20px;">Illness covered</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" ><p style="font-size: 15px;" *ngFor="let illness of illnessList">{{illness.illness_name}}</p></dd>
+            </div>
+        </dl>
+    </div>
+</div>
+<form>
+    <br><br>
+<div class="p-2 w-full">
+    <button (click)=requestForHealthPolicy() class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Send Request</button>
+  </div>
+</form>

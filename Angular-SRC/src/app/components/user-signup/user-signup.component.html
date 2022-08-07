@@ -1,0 +1,53 @@
+<div class="auth">
+    <div class="auth__header">
+      <div class="auth__logo">
+        <img height="90" src="https://www.tataaia.com/content/dam/tataaialifeinsurancecompanylimited/about-us/WhoWeAre_AboutUs.png" alt="">
+      </div>
+    </div>
+    <div class="auth__body" style="margin-top: 0px;">
+      <form class="auth__form" autocomplete="off"  #SPForm="ngForm" (ngSubmit)="onSubmit(userModel)">
+        <div class="auth__form_body">
+          <h3 class="auth__form_title">User SIGNUP</h3>
+          <div>
+            <div class="form-group">
+
+              <label class="text-uppercase small">Email</label>
+              <input type="email" class="form-control" placeholder="Enter email" name="emailid" [(ngModel)]="userModel.emailid" required>
+            </div>
+            <div class="form-group">
+              <label class="text-uppercase small">Password</label>
+              <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="userModel.password" required>
+            </div>
+            <div class="form-group">
+                <label class="text-uppercase small">Mobile No</label>
+                <input type="number" class="form-control" placeholder="mobileno" name="mobileno" [(ngModel)]="userModel.mobileno" required>
+              </div>
+              <div class="form-group">
+                <label class="text-uppercase small">Name</label>
+                <input type="text" class="form-control" placeholder="Name" name="name" [(ngModel)]="userModel.name" required>
+              </div>
+              <div class="form-group">
+                <label class="text-uppercase small">Address</label>
+                <input type="text" class="form-control" placeholder="Address" name="address" [(ngModel)]="userModel.address" required>
+              </div>
+              <div class="form-group">
+                <label class="text-uppercase small">Pincode</label>
+                <input type="number" class="form-control" placeholder="Pincode" name="pincode" [(ngModel)]="userModel.pincode" required>
+              </div>
+              <div class="form-group">
+                <label class="text-uppercase small">birthdate</label>
+                <input type="date" class="form-control" name="birthdate" [(ngModel)]="userModel.birthdate" required>
+              </div>
+          </div>
+        </div>
+        <div class="auth__form_actions">
+          <button class="btn btn-primary btn-lg btn-block">
+            SUBMIT
+          </button>
+         
+        </div>
+      </form>
+    </div>
+  </div>
+
+    

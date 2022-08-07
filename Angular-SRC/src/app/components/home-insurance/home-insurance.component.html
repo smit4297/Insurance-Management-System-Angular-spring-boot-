@@ -1,0 +1,82 @@
+<header class="text-gray-700 body-font border-b border-gray-200">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" (click)="Home()" target="_blank">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+      </svg>
+      <span class="ml-3 text-xl" >SSR Federal Insurance</span>
+    </a>
+    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+      <a class="mr-5 hover:text-gray-900" (click)="HealthInsurance()">Health Insurance</a>
+      <a class="mr-5 hover:text-gray-900" (click)="HomeInsurance()">Home Insurance</a>
+      <div *ngIf="!isLoggedIn; else elseBlock">
+        <a class="mr-5 hover:text-gray-900" (click)="AdminLogin()">Admin Login</a>
+        <a class="mr-5 hover:text-gray-900" (click)="UserLogin()">User Login</a>
+      </div>
+      <ng-template #elseBlock>
+      <a class="mr-5 hover:text-gray-900" (click)="OwnedPolicies()">Your policies</a>
+      </ng-template>
+    </nav>
+    <!-- <button class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0">Button
+      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7"></path>
+      </svg>
+    </button> -->
+  </div>
+</header>
+
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto flex flex-col">
+      <div class="lg:w-4/6 mx-auto">
+        <div class="rounded-lg h-64 overflow-hidden">
+          <img alt="content" class="object-cover object-center h-full w-full"  src="https://www.eimins.com/wp-content/uploads/2017/05/slide2.jpg">
+        </div>
+        <div class="flex flex-col sm:flex-row mt-10">
+          <div class="sm:w-1/3 text-center sm:pr-8 sm:py-8">
+            <div class="flex flex-col items-center text-center justify-center"> 
+              <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">SSR SPECIAL HOME INSURANCE</h2>
+              <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
+              <p class="text-base">Getting insurance is YOUR responsibility to your family and loved ones. You may hate it but it is your responsibility.</p>
+            </div>
+          </div>
+          <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+            <p class="leading-relaxed text-lg mb-4">Having a house of your own is something that everyone dreams of. And there is no better feeling than when this dream comes true. Property is one of the most useful assets that anyone can own. But what many tend to neglect is securing that property.You should have a home insurance policy because it covers the financial loss. You may also have to bear the damage to property and its belongings under conditions not controlled by you.</p>
+            <a class="text-indigo-500 inline-flex items-center" (click)="RequestForm()"><button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Like This Policy?</button>
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
+      <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+        <h1 class="title-font font-medium text-3xl text-gray-900">Calculate Premium</h1>
+        <p class="leading-relaxed mt-4" style="font-size: 20px;">Your recommended sumassurance value is ₹{{sumassurance}}.</p>
+        <p class="leading-relaxed mt-4" style="font-size: 20px;">Your Monthly Premuim value is ₹{{premium}}.</p>
+      </div>
+      <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+        <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Premium Calculator</h2>
+    <form #SPForm="ngForm" (ngSubmit)="onSubmit(areaid,homevalue,deductables,policyterm)">
+        <div class="relative mb-4">
+          <label for="areaid" class="leading-7 text-sm text-gray-600">Pincode</label>
+          <input type="number" id="areaid" name="areaid" [(ngModel)]="areaid" required class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div>
+        <div class="relative mb-4">
+            <label for="homevalue" class="leading-7 text-sm text-gray-600">Home Value</label>
+            <input type="number" id="homevalue" name="homevalue" [(ngModel)]="homevalue" required class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          </div>
+          <div class="relative mb-4">
+            <label for="deductables" class="leading-7 text-sm text-gray-600">deductables</label>
+            <input type="number" id="deductables" name="deductables" [(ngModel)]="deductables" required class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          </div>
+          <div class="relative mb-4">
+            <label for="policyterm" class="leading-7 text-sm text-gray-600">policyterm</label>
+            <input type="number" id="policyterm" name="policyterm" [(ngModel)]="policyterm" required class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          </div>
+        <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Calculate</button>
+    </form>
+      </div>
+    </div>
+  </section>
